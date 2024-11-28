@@ -43,7 +43,7 @@ config.keys = {
 	-- Keybinding for closing the current pane
 	{ key = "q", mods = "CTRL|SHIFT", action = w.action({ CloseCurrentPane = { confirm = true } }) },
 	-- Keybinding for closing the current tab
-	{ key = "c", mods = "CTRL|SHIFT", action = w.action({ CloseCurrentTab = { confirm = true } }) },
+	{ key = "d", mods = "CTRL|SHIFT", action = w.action({ CloseCurrentTab = { confirm = true } }) },
 	-- Show the selector, using your own alphabet
 	{ key = "p", mods = "CTRL", action = w.action({ PaneSelect = { alphabet = "0123456789" } }) },
 }
