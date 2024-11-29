@@ -35,17 +35,21 @@ config.keys = {
 	{ key = "s", mods = "CTRL|SHIFT", action = w.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
 
 	-- Keybindings for resizing panes
-	{ key = "LeftArrow", mods = "ALT", action = w.action({ AdjustPaneSize = { "Left", 10 } }) },
-	{ key = "RightArrow", mods = "ALT", action = w.action({ AdjustPaneSize = { "Right", 10 } }) },
-	{ key = "UpArrow", mods = "ALT", action = w.action({ AdjustPaneSize = { "Up", 10 } }) },
-	{ key = "DownArrow", mods = "ALT", action = w.action({ AdjustPaneSize = { "Down", 10 } }) },
+	{ key = "LeftArrow", mods = "CTRL|ALT", action = w.action({ AdjustPaneSize = { "Left", 10 } }) },
+	{ key = "RightArrow", mods = "CTRL|ALT", action = w.action({ AdjustPaneSize = { "Right", 10 } }) },
+	{ key = "UpArrow", mods = "CTRL|ALT", action = w.action({ AdjustPaneSize = { "Up", 10 } }) },
+	{ key = "DownArrow", mods = "CTRL|ALT", action = w.action({ AdjustPaneSize = { "Down", 10 } }) },
 
 	-- Keybinding for closing the current pane
 	{ key = "q", mods = "CTRL|SHIFT", action = w.action({ CloseCurrentPane = { confirm = true } }) },
 	-- Keybinding for closing the current tab
 	{ key = "d", mods = "CTRL|SHIFT", action = w.action({ CloseCurrentTab = { confirm = true } }) },
 	-- Show the selector, using your own alphabet
-	{ key = "p", mods = "CTRL", action = w.action({ PaneSelect = { alphabet = "0123456789" } }) },
+	{
+		key = "p",
+		mods = "CTRL",
+		action = w.action({ PaneSelect = { alphabet = "0123456789", mode = "SwapWithActive" } }),
+	},
 }
 
 -- theme
