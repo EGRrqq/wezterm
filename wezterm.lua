@@ -55,4 +55,7 @@ config.keys = {
 -- theme
 config.color_scheme = "oneLight"
 
+-- default terminal for windows
+config.default_prog = { 'powershell.exe' }
+
 return config
