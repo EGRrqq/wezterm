@@ -12,8 +12,9 @@ sessionizer.apply_to_config(config, true) -- disable default binds (right now yo
 -- you can also list multiple paths
 sessionizer.config = {
 	paths = {
-		"/home/egrqq/repos/",
-		"/home/egrqq/.config/",
+		"C:/users/egork/.config",
+		"C:/users/egork/AppData/Roaming/helix",
+		"D:/repos",
 	},
 }
 
