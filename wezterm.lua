@@ -11,7 +11,7 @@ local config_path = home_dir .. ("/.config")
 local schema = {
    options = {
       title = "My title",
-      always_fuzzy = false,
+      always_fuzzy = true,
       callback = history.Wrapper(sessionizer.DefaultCallback), -- tell history that we changed to another workspace
    },
    config_path .. "/wezterm",
@@ -51,6 +51,6 @@ config.keys = {
 -- theme
 config.color_scheme = "oneLight"
 -- font
-config.font_size = 18
+config.font_size = 20
 
 return config
