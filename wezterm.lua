@@ -1,36 +1,32 @@
-local w = require("wezterm")
-
+local w = require 'wezterm'
 local config = {}
 
-if w.config_builder then
-	config = w.config_builder()
-end
-
 -- sessionizer
-local sessionizer = w.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
-sessionizer.apply_to_config(config, true) -- disable default binds (right now you can also just not call this)
--- you can also list multiple paths
-sessionizer.config = {
-	paths = {
-		"/home/egrqq/repos/",
-		"/home/egrqq/.config/",
-	},
+local sessionizer = w.plugin.require "https://github.com/mikkasendke/sessionizer.wezterm"
+local history = w.plugin.require "https://github.com/mikkasendke/sessionizer-history.git" -- the most recent functionality moved to another plugin
+
+local home_dir = w.home_dir
+local config_path = home_dir .. ("/.config")
+
+local schema = {
+   options = {
+      title = "My title",
+      always_fuzzy = false,
+      callback = history.Wrapper(sessionizer.DefaultCallback), -- tell history that we changed to another workspace
+   },
+   config_path .. "/wezterm",
+   config_path .. "/nvim",
+   config_path,
+   home_dir .. "/.nixos",
+   home_dir .. "/repos",
+   sessionizer.FdSearch { home_dir .. "/repos", include_submodules = true },
 }
-
 config.keys = {
-	-- Keybindings for sessionizer
-	{
-		key = "s",
-		mods = "ALT",
-		action = sessionizer.show,
-	},
-	{
-		key = "r",
-		mods = "ALT",
-		action = sessionizer.switch_to_most_recent,
-	},
+	  -- Keybindings for sessionizer
+   { key = "s", mods = "ALT", action = sessionizer.show(schema) },
+   { key = "m", mods = "ALT", action = history.switch_to_most_recent_workspace },
 
-	-- Keybindings for pane splitting
+   -- Keybindings for pane splitting
 	{ key = '"', mods = "CTRL|SHIFT", action = w.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
 	{ key = "s", mods = "CTRL|SHIFT", action = w.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
 
@@ -54,5 +50,7 @@ config.keys = {
 
 -- theme
 config.color_scheme = "oneLight"
+-- font
+config.font_size = 18
 
 return config
