@@ -8,6 +8,47 @@ local history = w.plugin.require("https://github.com/mikkasendke/sessionizer-his
 local home_dir = w.home_dir
 local config_path = home_dir .. "/.config"
 
+-- Disable the "fancy" bar so it respects your color choices
+config.use_fancy_tab_bar = false
+
+-- Apply your custom tab bar colors based on One Light
+config.colors = {
+	tab_bar = {
+		-- The background of the empty space behind tabs
+		background = "#eaeaea",
+
+		-- The tab you are currently looking at (matches your main window)
+		active_tab = {
+			fg_color = "#2a2c33", -- One Light main text
+			bg_color = "#fafafa", -- One Light main background
+			intensity = "Normal",
+			italic = false,
+		},
+
+		-- Tabs that are open but not currently focused
+		inactive_tab = {
+			fg_color = "#2a2c33", -- Muted text for readability
+			bg_color = "#e0e0e0", -- Slightly darker gray to show it is inactive
+		},
+
+		-- When you hover your mouse over an inactive tab
+		inactive_tab_hover = {
+			fg_color = "#2a2c33",
+			bg_color = "#d5d5d5",
+		},
+
+		-- The "New Tab" plus button (+)
+		new_tab = {
+			fg_color = "#2a2c33",
+			bg_color = "#e0e0e0",
+		},
+		new_tab_hover = {
+			fg_color = "#2a2c33",
+			bg_color = "#d5d5d5",
+		},
+	},
+}
+
 local schema = {
 	options = {
 		title = "My title",
@@ -24,7 +65,7 @@ local schema = {
 config.keys = {
 	-- Keybindings for sessionizer
 	{ key = "m", mods = "CTRL|SHIFT", action = sessionizer.show(schema) },
-	{ key = "x", mods = "CTRL|SHIFT", action = history.switch_to_most_recent_workspace },
+	{ key = "e", mods = "CTRL|SHIFT", action = history.switch_to_most_recent_workspace },
 
 	-- Keybindings for pane splitting
 	{ key = '"', mods = "CTRL|SHIFT", action = w.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
