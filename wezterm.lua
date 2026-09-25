@@ -67,6 +67,12 @@ config.keys = {
 	{ key = "m", mods = "CTRL|SHIFT", action = sessionizer.show(schema) },
 	{ key = "e", mods = "CTRL|SHIFT", action = history.switch_to_most_recent_workspace },
 
+	-- Keybindings for pane navigation
+	{ key = 'h', mods = "CTRL|SHIFT", action = w.action({ ActivatePaneDirection = "Left" }) },
+	{ key = 'j', mods = "CTRL|SHIFT", action = w.action({ ActivatePaneDirection = "Down" }) },
+	{ key = 'k', mods = "CTRL|SHIFT", action = w.action({ ActivatePaneDirection = "Up" }) },
+	{ key = 'l', mods = "CTRL|SHIFT", action = w.action({ ActivatePaneDirection = "Right" }) },   
+
 	-- Keybindings for pane splitting
 	{ key = '"', mods = "CTRL|SHIFT", action = w.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
 	{ key = "s", mods = "CTRL|SHIFT", action = w.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
